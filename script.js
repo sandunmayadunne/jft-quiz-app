@@ -3,6 +3,7 @@ let score = 0;
 let quizQuestions = [];
 let currentQuizType = "";
 
+const mainBox = document.getElementById("main-box"); // අලුතින් එකතු කළා
 const homeScreen = document.getElementById("home-screen");
 const quizScreen = document.getElementById("quiz-screen");
 const resultScreen = document.getElementById("result-screen");
@@ -22,6 +23,7 @@ document.getElementById("btn-hiragana").addEventListener("click", () => startQui
 document.getElementById("restart-btn").addEventListener("click", () => {
     resultScreen.classList.add("hidden");
     homeScreen.classList.remove("hidden");
+    mainBox.classList.add("glass-mode"); // Home එකට එද්දී transparent වෙනවා
 });
 
 function startQuiz(type) {
@@ -46,6 +48,8 @@ function startQuiz(type) {
     homeScreen.classList.add("hidden");
     resultScreen.classList.add("hidden");
     quizScreen.classList.remove("hidden");
+    
+    mainBox.classList.remove("glass-mode"); // Quiz එකට යද්දී සුදු පාට වෙනවා
 
     loadQuestion();
 }
@@ -147,6 +151,7 @@ modalOkBtn.addEventListener("click", () => {
     customModal.classList.add("hidden");
     quizScreen.classList.add("hidden");
     homeScreen.classList.remove("hidden");
+    mainBox.classList.add("glass-mode"); // Popup එකෙන් Home ගියාම transparent වෙනවා
 });
 
 nextBtn.addEventListener("click", () => {

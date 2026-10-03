@@ -12,7 +12,6 @@ const quizInstruction = document.getElementById("quiz-instruction");
 const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
-// අලුත් current question display එක
 const currentQDisplay = document.getElementById("current-q");
 const totalDisplay = document.getElementById("total");
 const finalScoreText = document.getElementById("final-score-text");
@@ -68,7 +67,6 @@ function loadQuestion() {
     optionsContainer.innerHTML = "";
     nextBtn.classList.add("hidden");
 
-    // මෙතනින් තමයි දැන් ඉන්න ප්‍රශ්න අංකය update වෙන්නේ
     currentQDisplay.innerText = currentQuestionIndex + 1;
 
     const currentQ = quizQuestions[currentQuestionIndex];
@@ -111,7 +109,6 @@ function checkAnswer(selectedButton, selectedAnswer, correctAnswer) {
     
     buttons.forEach(btn => btn.style.pointerEvents = "none");
 
-    // Score එක හැංගිලා හැදෙනවා, ඒත් screen එකේ පෙන්නන්නේ නෑ
     if (selectedAnswer === correctAnswer) {
         selectedButton.classList.add("correct");
         score++;

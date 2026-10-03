@@ -200,14 +200,14 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* 100vw වෙනුවට 100% - Scrollbar අවුල හදන්න */
-    height: 100%; /* 100vh වෙනුවට 100% */
+    width: 100vw; 
+    height: 100vh;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999; /* හැමදේටම උඩින් පෙන්වන්න */
 }
 
 .modal-box {

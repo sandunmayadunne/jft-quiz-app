@@ -15,24 +15,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100dvh; /* ෆෝන් වල තිරයට හරියටම ෆිට් වෙන්න */
+    overflow: hidden; /* මුළු පිටුවම scroll වීම නැවැත්වීම */
     padding: 15px;
 }
 
 .app-container {
-    background-color: rgba(255, 255, 255, 0.95); /* Quiz එකේදී පැහැදිලිව පේන්න සුදු පාට */
-    width: 90vw;
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 100%;
     max-width: 450px;
+    height: 90vh; /* Glass Box එකේ උස ෆෝන් එකේ උසෙන් 90%ක් කිරීම */
+    max-height: 850px;
     border-radius: 20px;
-    padding: 25px;
+    padding: 25px 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     text-align: center;
     border: 1px solid #f9d2dc;
-    margin: 15px auto;
-    transition: all 0.4s ease; /* පාට මාරුවෙද්දී smooth වෙන්න */
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column; /* ඇතුළත දේවල් පිළිවෙලට හදන්න */
 }
 
-/* Home එකේදී විතරක් transparent (වීදුරුවක් වගේ) වීම */
+/* Glassmorphism Effect for Home */
 .app-container.glass-mode {
     background-color: rgba(255, 255, 255, 0.35); 
     backdrop-filter: blur(15px);
@@ -43,7 +47,14 @@ body {
 .screen {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    flex: 1; /* ඉතුරු වෙලා තියෙන ඉඩ පුරවා ගැනීම */
+    overflow: hidden; /* Screen එක ඇතුළෙන් එළියට පැනීම වැළැක්වීම */
+}
+
+.title-section {
+    flex-shrink: 0; /* මාතෘකාව හැකිලෙන්නේ නැති වෙන්න */
+    margin-bottom: 5px;
 }
 
 .main-title {
@@ -58,21 +69,32 @@ body {
     font-weight: 500;
 }
 
-/* Home Menu Cards */
+/* Home Menu Cards - බටන් ටික scroll වන කොටස */
 .menu-cards {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+    flex: 1; 
+    overflow-y: auto; /* Scroll කිරීම සක්‍රීය කිරීම */
+    padding-bottom: 20px; 
+    
+    /* Scrollbar එක hide කිරීම (ලස්සන වෙන්න) */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.menu-cards::-webkit-scrollbar {
+    display: none;
 }
 
 .menu-card {
-    background: #ffffff;
-    border: 2px solid #f4c2cc;
+    background: rgba(255, 255, 255, 0.7); 
+    border: 2px solid rgba(244, 194, 204, 0.8);
     border-radius: 15px;
-    padding: 20px;
+    padding: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    flex-shrink: 0; /* බටන් වල උස අඩුවීම වැළැක්වීම */
 }
 
 .menu-card:hover {
@@ -82,31 +104,30 @@ body {
 }
 
 .card-icon {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 5px;
 }
 
 .menu-card h3 {
     color: #2c3e50;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .menu-card p {
     color: #888;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-top: 5px;
 }
 
-/* =====================================
-   FIXED HEADER (Score & Home Btn)
-   ===================================== */
+/* Header & Quiz */
 .header {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-bottom: 2px solid #f4c2cc;
-    padding-bottom: 15px;
-    gap: 12px;
+    padding-bottom: 10px;
+    gap: 10px;
+    flex-shrink: 0; /* Header එක fixedව තැබීම */
 }
 
 .header-top {
@@ -124,7 +145,7 @@ body {
 
 .home-btn {
     background-color: #ffffff;
-    border: 2px solid #f4c2cc;
+    border: 1px solid #f4c2cc;
     border-radius: 8px;
     padding: 6px 12px;
     color: #bc002d;
@@ -147,44 +168,134 @@ body {
     padding: 5px 12px;
     border-radius: 8px;
 }
-/* ===================================== */
+
+/* Flashcard Design (Learn Screen) */
+.flashcard {
+    background: #ffffff;
+    border: 2px solid #f4c2cc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(188, 0, 45, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1; /* ඉතුරු ඉඩ ලබා ගැනීම */
+    overflow-y: auto; /* දිග වැඩි නම් scroll වීම */
+    
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.flashcard::-webkit-scrollbar { display: none; }
+
+.flashcard-label {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: -5px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.jap-text {
+    font-size: 1.3rem;
+    color: #bc002d;
+    font-weight: bold;
+}
+
+.romaji-text {
+    font-size: 1.2rem;
+    color: #555;
+    font-style: italic;
+}
+
+.sin-text {
+    font-size: 1.15rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.speak-btn {
+    background-color: #bc002d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(188, 0, 45, 0.2);
+    flex-shrink: 0;
+}
+
+.speak-btn:hover {
+    background-color: #9a0025;
+    transform: scale(1.02);
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-shrink: 0; /* යටම Button fixedව තැබීම */
+}
+
+.nav-btn {
+    flex: 1;
+    background-color: #f1f1f1;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #333;
+}
+
+.nav-btn:hover { background-color: #e2e2e2; }
+.nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.question-box {
+    flex-shrink: 0; 
+}
 
 #question-text {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #2c3e50;
-    margin: 15px 0;
+    margin: 10px 0;
     line-height: 1.4;
 }
 
+/* Options Container - SCROLLABLE AREA for Quiz */
 .options {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    flex: 1;
+    overflow-y: auto; /* Quiz උත්තර ටිකත් Scroll වීම */
+    
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+.options::-webkit-scrollbar { display: none; }
 
 .option-btn {
     background-color: #ffffff;
     border: 2px solid #e0e0e0;
     border-radius: 12px;
-    padding: 16px 12px;
+    padding: 14px 12px;
     font-size: 1.05rem;
     cursor: pointer;
     transition: 0.2s;
     font-weight: 600;
     color: #444;
+    flex-shrink: 0;
 }
 
-.option-btn.correct {
-    background-color: #d4edda !important;
-    border-color: #28a745 !important;
-    color: #155724 !important;
-}
-
-.option-btn.wrong {
-    background-color: #f8d7da !important;
-    border-color: #dc3545 !important;
-    color: #721c24 !important;
-}
+.option-btn.correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; }
+.option-btn.wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; }
 
 .primary-btn {
     width: 100%;
@@ -198,85 +309,21 @@ body {
     cursor: pointer;
     margin-top: 10px;
     transition: background 0.3s;
+    flex-shrink: 0; /* Next Button එක යටට fixed වීම */
 }
 
 .primary-btn:hover { background-color: #9a0025; }
 .hidden { display: none !important; }
 
-/* =========================================
-   Custom Modal Overlay (Popup Alert)
-   ========================================= */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; 
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* හැමදේටම උඩින් පෙන්වන්න */
-}
-
-.modal-box {
-    background: white;
-    width: 85vw;
-    max-width: 350px;
-    padding: 25px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(188, 0, 45, 0.2);
-    border: 2px solid #f9d2dc;
-    animation: popIn 0.3s ease;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.modal-box h3 {
-    color: #bc002d;
-    margin-bottom: 12px;
-    font-size: 1.3rem;
-}
-
-#modal-message {
-    color: #444;
-    font-size: 1.05rem;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.modal-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-.modal-btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.cancel-btn {
-    background-color: #f1f1f1;
-    color: #333;
-}
-
+/* Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.modal-box { background: white; width: 85vw; max-width: 350px; padding: 25px; border-radius: 20px; text-align: center; box-shadow: 0 10px 40px rgba(188, 0, 45, 0.2); border: 2px solid #f9d2dc; animation: popIn 0.3s ease; }
+@keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-box h3 { color: #bc002d; margin-bottom: 12px; font-size: 1.3rem; }
+#modal-message { color: #444; font-size: 1.05rem; margin-bottom: 20px; line-height: 1.6; }
+.modal-buttons { display: flex; gap: 15px; justify-content: center; }
+.modal-btn { flex: 1; padding: 12px; border: none; border-radius: 10px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s; }
+.cancel-btn { background-color: #f1f1f1; color: #333; }
 .cancel-btn:hover { background-color: #e2e2e2; }
-
-.ok-btn {
-    background-color: #bc002d;
-    color: white;
-}
-
+.ok-btn { background-color: #bc002d; color: white; }
 .ok-btn:hover { background-color: #9a0025; }

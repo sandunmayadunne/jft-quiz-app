@@ -12,22 +12,71 @@
         <!-- Home Screen -->
         <div id="home-screen" class="screen">
             <div class="title-section">
-                <h1 class="main-title">Practice</h1>
+                <h1 class="main-title">JFT Basic Practice</h1>
                 <p class="subtitle">අපි ඉගෙන ගත් දේවල් පුහුණු වෙමු 🌸</p>
             </div>
             
             <div class="menu-cards">
+                <!-- Learn Buttons -->
+                <div class="menu-card" id="btn-learn-aisatsu">
+                    <div class="card-icon">🔊</div>
+                    <h3>වචන පුහුණුව (Aisatsu)</h3>
+                    <p>ආචාර සමාචාර ශබ්දය සමඟ</p>
+                </div>
+
+                <div class="menu-card" id="btn-learn-family">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <h3>වචන පුහුණුව (Kazoku)</h3>
+                    <p>පවුලේ අය ශබ්දය සමඟ</p>
+                </div>
+
+                <!-- Quiz Buttons -->
                 <div class="menu-card" id="btn-aisatsu">
                     <div class="card-icon">🙇‍♂️</div>
-                    <h3>ආචාර සමාචාර</h3>
-                    <p>Aisatsu ඉගෙන ගමු</p>
+                    <h3>Aisatsu (Quiz)</h3>
+                    <p>ආචාර සමාචාර ප්‍රශ්න</p>
+                </div>
+
+                <div class="menu-card" id="btn-family">
+                    <div class="card-icon">🏠</div>
+                    <h3>Kazoku (Quiz)</h3>
+                    <p>පවුලේ අය පිළිබඳ ප්‍රශ්න</p>
                 </div>
 
                 <div class="menu-card" id="btn-hiragana">
                     <div class="card-icon">あ</div>
-                    <h3>හිරගනා හෝඩිය</h3>
-                    <p>Hiragana ඉගෙන ගමු</p>
+                    <h3>Hiragana (Quiz)</h3>
+                    <p>හිරගනා හෝඩිය ප්‍රශ්න</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Learn Screen (Flashcards) -->
+        <div id="learn-screen" class="screen hidden">
+            <div class="header">
+                <div class="header-top">
+                    <button id="learn-home-btn" class="home-btn">🏠 Home</button>
+                    <div id="score-board">වචනය: <span id="learn-current">1</span> / <span id="learn-total">0</span></div>
+                </div>
+                <h2 id="learn-title">වචන පුහුණුව</h2>
+            </div>
+
+            <div class="flashcard">
+                <p class="flashcard-label">ජපන් අකුරෙන් ලියන විදිහ:</p>
+                <h1 id="learn-jap" class="jap-text">ජපන් අකුරු</h1>
+                
+                <p class="flashcard-label">රෝමාජි (Romaji):</p>
+                <h3 id="learn-romaji" class="romaji-text">Romaji</h3>
+                
+                <p class="flashcard-label">සිංහල තේරුම:</p>
+                <p id="learn-sin" class="sin-text">සිංහල තේරුම</p>
+                
+                <button id="learn-speak-btn" class="speak-btn">🔊 ශබ්දය අහන්න</button>
+            </div>
+
+            <div class="nav-buttons">
+                <button id="prev-word-btn" class="nav-btn">⬅️ කලින්</button>
+                <button id="next-word-btn" class="nav-btn">ඊළඟ ➡️</button>
             </div>
         </div>
 
@@ -59,9 +108,9 @@
             <button id="restart-btn" class="primary-btn">Back to Home</button>
         </div>
 
-    </div> <!-- app-container එක මෙතනින් ඉවරයි -->
+    </div>
 
-    <!-- Custom Confirm Modal (app-container එකෙන් එළියට දැම්මා) -->
+    <!-- Custom Confirm Modal -->
     <div id="custom-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <h3>පිටවෙනවාද?</h3>
@@ -76,6 +125,7 @@
     <!-- Data Files -->
     <script src="aisatsu.js"></script>
     <script src="hiragana.js"></script>
+    <script src="family.js"></script> <!-- අලුත් ෆයිල් එක -->
     <!-- Main Logic -->
     <script src="script.js"></script>
 </body>

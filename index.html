@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JFT Exam Prep - Sri Lanka</title>
+    <title>JFT Practice - Sri Lanka</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,8 +12,8 @@
         <!-- Home Screen -->
         <div id="home-screen" class="screen">
             <div class="title-section">
-                <h1 class="main-title">JFT Basic Exam</h1>
-                <p class="subtitle">ජපන් භාෂාව ඉගෙන ගනිමු 🌸</p>
+                <h1 class="main-title">Practice</h1>
+                <p class="subtitle">අපි ඉගෙන ගත් දේවල් පුහුණු වෙමු 🌸</p>
             </div>
             
             <div class="menu-cards">
@@ -31,11 +31,26 @@
             </div>
         </div>
 
+        <!-- Custom Confirm Modal -->
+        <div id="custom-modal" class="modal-overlay hidden">
+            <div class="modal-box">
+                <h3>පිටවෙනවාද?</h3>
+                <p id="modal-message">Message goes here</p>
+                <div class="modal-buttons">
+                    <button id="modal-cancel-btn" class="modal-btn cancel-btn">නැහැ</button>
+                    <button id="modal-ok-btn" class="modal-btn ok-btn">ඔව්</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Quiz Screen -->
         <div id="quiz-screen" class="screen hidden">
             <div class="header">
+                <div class="header-top">
+                    <button id="go-home-btn" class="home-btn">🏠 Home</button>
+                    <div id="score-board">ප්‍රශ්නය: <span id="current-q">0</span> / <span id="total">0</span></div>
+                </div>
                 <h2 id="quiz-title">Quiz</h2>
-                <div id="score-board">Score: <span id="score">0</span> / <span id="total">0</span></div>
             </div>
 
             <div class="question-box">

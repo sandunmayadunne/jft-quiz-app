@@ -48,6 +48,7 @@ body {
     font-weight: 500;
 }
 
+/* Home Menu Cards */
 .menu-cards {
     display: flex;
     flex-direction: column;
@@ -86,18 +87,57 @@ body {
     margin-top: 5px;
 }
 
+/* =====================================
+   FIXED HEADER (Score & Home Btn)
+   ===================================== */
 .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid #f4c2cc;
+    padding-bottom: 15px;
+    gap: 12px;
+}
+
+.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #f4c2cc;
-    padding-bottom: 10px;
+    width: 100%;
 }
 
 .header h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #bc002d;
+    text-align: center;
 }
+
+.home-btn {
+    background-color: #ffffff;
+    border: 2px solid #f4c2cc;
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #bc002d;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+    background-color: #fff5f7;
+    border-color: #bc002d;
+}
+
+#score-board {
+    font-weight: bold;
+    color: #444;
+    font-size: 0.95rem;
+    background: #f1f1f1;
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+/* ===================================== */
 
 #question-text {
     font-size: 1.4rem;
@@ -152,3 +192,81 @@ body {
 
 .primary-btn:hover { background-color: #9a0025; }
 .hidden { display: none !important; }
+
+/* =========================================
+   Custom Modal Overlay (Popup Alert)
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* 100vw වෙනුවට 100% - Scrollbar අවුල හදන්න */
+    height: 100%; /* 100vh වෙනුවට 100% */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: white;
+    width: 85vw;
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(188, 0, 45, 0.2);
+    border: 2px solid #f9d2dc;
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-box h3 {
+    color: #bc002d;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+#modal-message {
+    color: #444;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancel-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.cancel-btn:hover { background-color: #e2e2e2; }
+
+.ok-btn {
+    background-color: #bc002d;
+    color: white;
+}
+
+.ok-btn:hover { background-color: #9a0025; }

@@ -12,7 +12,8 @@ const quizInstruction = document.getElementById("quiz-instruction");
 const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
-const scoreDisplay = document.getElementById("score");
+// අලුත් current question display එක
+const currentQDisplay = document.getElementById("current-q");
 const totalDisplay = document.getElementById("total");
 const finalScoreText = document.getElementById("final-score-text");
 
@@ -33,7 +34,6 @@ function startQuiz(type) {
     
     quizQuestions = [...dataSource].sort(() => Math.random() - 0.5);
     
-    scoreDisplay.innerText = score;
     totalDisplay.innerText = quizQuestions.length;
 
     if (type === "aisatsu") {
@@ -67,6 +67,9 @@ function getOptions(correctAnswer, dataSource, answerKey) {
 function loadQuestion() {
     optionsContainer.innerHTML = "";
     nextBtn.classList.add("hidden");
+
+    // මෙතනින් තමයි දැන් ඉන්න ප්‍රශ්න අංකය update වෙන්නේ
+    currentQDisplay.innerText = currentQuestionIndex + 1;
 
     const currentQ = quizQuestions[currentQuestionIndex];
     let questionString = "";
@@ -108,10 +111,10 @@ function checkAnswer(selectedButton, selectedAnswer, correctAnswer) {
     
     buttons.forEach(btn => btn.style.pointerEvents = "none");
 
+    // Score එක හැංගිලා හැදෙනවා, ඒත් screen එකේ පෙන්නන්නේ නෑ
     if (selectedAnswer === correctAnswer) {
         selectedButton.classList.add("correct");
         score++;
-        scoreDisplay.innerText = score;
     } else {
         selectedButton.classList.add("wrong");
         buttons.forEach(btn => {
@@ -123,6 +126,31 @@ function checkAnswer(selectedButton, selectedAnswer, correctAnswer) {
 
     nextBtn.classList.remove("hidden");
 }
+
+const goHomeBtn = document.getElementById("go-home-btn");
+const customModal = document.getElementById("custom-modal");
+const modalMessage = document.getElementById("modal-message");
+const modalCancelBtn = document.getElementById("modal-cancel-btn");
+const modalOkBtn = document.getElementById("modal-ok-btn");
+
+goHomeBtn.addEventListener("click", () => {
+    const answered = currentQuestionIndex; 
+    const remaining = quizQuestions.length - answered;
+    
+    modalMessage.innerHTML = `ඔබ මෙතෙක් ප්‍රශ්න <b>${answered}</b> කට පිළිතුරු දී ඇත.<br>ඒවායින් <b>${score}</b> ක් නිවැරදියි.<br>මෙම කොටස අවසන් කිරීමට තව ප්‍රශ්න <b>${remaining}</b> ක් ඉතිරිව ඇත.<br><br>ඔබට නිසැකවම Home එකට යාමට අවශ්‍යද?`;
+    
+    customModal.classList.remove("hidden");
+});
+
+modalCancelBtn.addEventListener("click", () => {
+    customModal.classList.add("hidden");
+});
+
+modalOkBtn.addEventListener("click", () => {
+    customModal.classList.add("hidden");
+    quizScreen.classList.add("hidden");
+    homeScreen.classList.remove("hidden");
+});
 
 nextBtn.addEventListener("click", () => {
     currentQuestionIndex++;

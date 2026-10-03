@@ -6,12 +6,10 @@
 }
 
 body {
-    /* Japanese traditional Sakura pink & Rice paper texture vibe */
     background-color: #fbebf0;
     background-image: radial-gradient(#f7d9e3 20%, transparent 20%), radial-gradient(#f7d9e3 20%, transparent 20%);
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,13 +20,14 @@ body {
 .app-container {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    width: 100%;
-    max-width: 400px;
+    width: 90vw;
+    max-width: 450px;
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(188, 0, 45, 0.1);
     text-align: center;
     border: 1px solid #f9d2dc;
+    margin: 15px auto;
 }
 
 .screen {
@@ -38,7 +37,7 @@ body {
 }
 
 .main-title {
-    color: #bc002d; /* Japanese Flag Red */
+    color: #bc002d;
     font-size: 2rem;
     margin-bottom: 5px;
 }
@@ -49,7 +48,6 @@ body {
     font-weight: 500;
 }
 
-/* Home Menu Cards */
 .menu-cards {
     display: flex;
     flex-direction: column;
@@ -88,7 +86,6 @@ body {
     margin-top: 5px;
 }
 
-/* Quiz UI */
 .header {
     display: flex;
     justify-content: space-between;
@@ -119,8 +116,8 @@ body {
     background-color: #ffffff;
     border: 2px solid #e0e0e0;
     border-radius: 12px;
-    padding: 15px;
-    font-size: 1.1rem;
+    padding: 16px 12px;
+    font-size: 1.05rem;
     cursor: pointer;
     transition: 0.2s;
     font-weight: 600;

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JFT Exam Prep - Sri Lanka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen">
+            <div class="title-section">
+                <h1 class="main-title">JFT Basic Exam</h1>
+                <p class="subtitle">ජපන් භාෂාව ඉගෙන ගනිමු 🌸</p>
+            </div>
+            
+            <div class="menu-cards">
+                <div class="menu-card" id="btn-aisatsu">
+                    <div class="card-icon">🙇‍♂️</div>
+                    <h3>ආචාර සමාචාර</h3>
+                    <p>Aisatsu ඉගෙන ගමු</p>
+                </div>
+
+                <div class="menu-card" id="btn-hiragana">
+                    <div class="card-icon">あ</div>
+                    <h3>හිරගනා හෝඩිය</h3>
+                    <p>Hiragana ඉගෙන ගමු</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen hidden">
+            <div class="header">
+                <h2 id="quiz-title">Quiz</h2>
+                <div id="score-board">Score: <span id="score">0</span> / <span id="total">0</span></div>
+            </div>
+
+            <div class="question-box">
+                <p id="quiz-instruction">උපදෙස්</p>
+                <h3 id="question-text">Question loads here</h3>
+            </div>
+
+            <div id="options-container" class="options">
+                <!-- Buttons JS walin enawa -->
+            </div>
+
+            <button id="next-btn" class="primary-btn hidden">Next Question ➔</button>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen hidden">
+            <h2>Quiz Completed! 🎉</h2>
+            <p id="final-score-text"></p>
+            <button id="restart-btn" class="primary-btn">Back to Home</button>
+        </div>
+
+    </div>
+
+    <!-- Data Files -->
+    <script src="aisatsu.js"></script>
+    <script src="hiragana.js"></script>
+    <!-- Main Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
